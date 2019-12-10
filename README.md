@@ -12,8 +12,8 @@
 ## Project: Eye image Segmentation (color image)
 
 Input example:
-![](./pic/Input_sample.jpg)
+![image](https://github.com/zjumhy97/MSP_Fa19_Proj_Team_1/blob/master/pic/Input_sample.jpg)
 
 Output example:
-![](./pic/Output_sample.jpg)
+![image](https://github.com/zjumhy97/MSP_Fa19_Proj_Team_1/blob/master/pic/Output_sample.jpg)
 
