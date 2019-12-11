@@ -17,16 +17,40 @@
             <td>
                 <!--left column-->
                 Input example:
-                <img src = "https://github.com/zjumhy97/MSP_Fa19_Proj_Team_1/blob/master/pic/Input_sample.jpg" width = "300" height="200" aligned = center>
+                <img src = "https://github.com/zjumhy97/MSP_Fa19_Proj_Team_1/blob/master/pic/Input_sample.jpg" width = "300" height="200" aligned = centering>
             </td>
             <td>
                 <!--rightcolumn-->
                 Output example:
-                <img src = "https://github.com/zjumhy97/MSP_Fa19_Proj_Team_1/blob/master/pic/Output_sample.jpg" width = "300" height="200" aligned = center>
+                <img src = "https://github.com/zjumhy97/MSP_Fa19_Proj_Team_1/blob/master/pic/Output_sample.jpg" width = "300" height="200" aligned = centerng>
             </td>
         </tr>
     </table>
 </html>
 
-
+<img src = /pic>
 ### Part 1 Expectation-Maximization Algorithm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
