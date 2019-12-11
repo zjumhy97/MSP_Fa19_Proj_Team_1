@@ -28,7 +28,6 @@
     </table>
 </html>
 
-<img src = /pic>
 ### Part 1 Expectation-Maximization Algorithm
 
 
