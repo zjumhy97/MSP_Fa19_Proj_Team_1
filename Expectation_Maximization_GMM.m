@@ -37,37 +37,40 @@ t = t + 1; % t=2,但是我需要Q(2)和Q(1)的信息，才能满足下面的循环开始条件
 while norm(Q(t) - Q(t-1)) > epsilon
 % Iterations begin from t = 3.
    t = t + 1; % 进来以后t = 3， 需要计算Q(3)，即Q(t),这里的Q的计算公式要拿去上面计算Q(1)和Q(2)
+   
    % E step: calculate Q(t)
    Q(t) = 0;
-   
-   % Q(t)算的不太对，下面这个循环要再看
-   for i = 1:N 
-      for  j = 1:K % total number of Gaussian components
-          sum_item = T_ijt * (log() - 0.5*log() - 0.5*log() - d/2*log(2*pi));
-          Q(t) = Q(t) + sum_item;
-      end
+   for i = 1:N
+       for j = 1:K
+           % 确认下面的式子里面，关于t的正确性，是t还是t-1,括号还不正确
+          Q(t) = Q(t) + T(i,j,t) * (log(Theta(t).Tao(j)) - ...
+              0.5*log(det(cell2mat(Theta(t).Sigma(j))) - ...
+              0.5*log( (X(i,:)' - cell2mat(Theta(t).Mu(j)')'  ...
+              * cell2mat(Theta(t).Sigma(j))^{-1} * (X(i,:)' - ...
+              cell2mat(Theta(t).Mu(j)'))  ) - d/2*log(2*pi)));
+       end
    end
    
    % M step: maximize Q(t),update Theta(t)
    for j = 1:K
-       Theta(t).Tao(j) = sum(T(:,j)) / sum(sum(T));
-       % Theta(t).Tao(j) = sum(T(:,j)) / N;
+       % T - T(i,j,t) represents the "mebemership probabilities"      
+       % Tao - column vector
+       Theta(t).Tao(j) = sum(T(:,j,t-1)) / N;
        
-       
-       % T是t时刻的T，而Mu和Sigma都是t+1时刻的
-       Temp(j).Mu = zeros(d,1);
-       Temp(j).Sigma = zeros(d,d);
+       % Mu - column vector
+       Temp.Mu = zeros(d,1);
        for i = 1:N
-          Temp(j).Mu = Temp(j).Mu + T(i,j) * X(i,:)';
-          Temp(j).Sigma = Temp(j).Sigma + T(i,j) * (X(i,:)' - Temp(j).Mu)*(X(i,:)' - Temp(j).Mu)';
+          Temp.Mu = Temp.Mu + T(i,j,t-1) * X(i,:)';  
        end
+       Theta(t).Mu(j) = {Temp.Mu / sum(T(:,j,t-1))};
        
-       Theta(t).Mu(j,:) = Temp(j).Mu'/sum(T(:,j)); % line vector
-       
-       % 这里有问题
-       Theta(t).Sigma(j) = Temp(j).Sigma/sum(T(:,j));
-   end
-   
+       % Sigma - covariance matrix
+       Temp.Sigma = zeros(d,d);
+       for i = 1:N
+          Temp.Sigma = Temp.Sigma + T(i,j,t-1) * (X(i,:)' - cell2mat(Theta(t).Mu(j))) * (X(i,:)' - cell2mat(Theta(t).Mu(j)))';  
+       end
+       Theta(t).Sigma(j) = {Temp.Sigma(j)};
+   end   
 end
     
     
