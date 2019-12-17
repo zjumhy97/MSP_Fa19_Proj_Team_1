@@ -28,7 +28,23 @@
     </table>
 </html>
 
+## 1. Introuduction
+
+
+## References
+<a id="1">[1]</a> 
+Gupta, Lalit, and Thotsapon Sortrakul. 
+"A Gaussian-mixture-based image segmentation algorithm." Pattern Recognition 31, no. 3 (1998): 315-325.
+
+
+
+
+
+
+
+
 ## Log
+<!-->
 >>2019/12/15 14:00 -- by Haoyu
 1. main.m  \
 <b>目前进度</b>\
@@ -64,6 +80,13 @@
 
 <b>核心关注点</b>
 1. 优化算法
+-->
+
+>>2019/12/17 -- by Haoyu
+
+1. Zhenwei 目前实现了一个版本的EM-GMM，他目前正在完成代码注释，完成后将合并到项目中来。
+2. 补充了原图像的直方图，说明为什么要采用GMM的方法去进行图像分割。文献中指出
+
 
 
 
