@@ -27,6 +27,7 @@ for p = 1:m
     end
 end
 
+
 % if needed, Theta, Q, T could be output to TEST. 如果调试的话，可以将这三个输出。
 [Theta,Q,T] = Expectation_Maximization_GMM(K,epsilon,ThetaInit,X);
 % Implement segmentation according to the EM-algorithm result.
