@@ -2,7 +2,7 @@
 
 **EEE5046 Modern Signal Processing (2019Fall)**\
 **Instructor** : Prof. Xiaoying Tang\
-**Team Number** : 1\
+**Team ID** : 1\
 **Team Member**: Zhenwei Yao, Xinrao Li, Yaoyao Ji, Man Liu, Wei Gu, Haoyu Miao\
 @Southern University of Science and Technology, SUSTech
 - - -
