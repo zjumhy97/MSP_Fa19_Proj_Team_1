@@ -44,8 +44,8 @@ Gupta, Lalit, and Thotsapon Sortrakul.
 
 
 ## Log
-<!-->
->>2019/12/15 14:00 -- by Haoyu
+<details>
+<summary>2019/12/15 14:00 -- by Haoyu</summary>
 1. main.m  \
 <b>目前进度</b>\
 导入图像数据，以及转化为HSV\
@@ -67,8 +67,10 @@ Gupta, Lalit, and Thotsapon Sortrakul.
 实现图像分割判断条件，将处理后得到的序列恢复为图像的数据格式\
 <b>可能存在的问题</b>\
 图像数据转化为序列采用的squeeze自带函数运行速度较慢，影响程序速度
+</details>
 
->>2019/12/16 20:30 -- by Haoyu
+<details>
+<summary>2019/12/16 20:30 -- by Haoyu</summary>
 
 <b>目前的问题</b>
 1. 第一版的代码完成了，但是我发现自己犯了非常致命的错误，从底层实现EM算法时，我全部采用了手动实现，采用了大量的for循环，对于EM算法来说，在E-step时要计算Q函数的值，每次都要对N个数据样本进行求和，而每次求和都要计算一个非常复杂的表达式。但最关键的问题在于样本图像是1728*2592的，对于N来说规模非常大。算法的运算速度是不可接受的。
@@ -80,13 +82,14 @@ Gupta, Lalit, and Thotsapon Sortrakul.
 
 <b>核心关注点</b>
 1. 优化算法
--->
+</details>
 
->>2019/12/17 -- by Haoyu
+<details>
+<summary>2019/12/17 15:00-- by Haoyu</summary>
 
 1. Zhenwei 目前实现了一个版本的EM-GMM，他目前正在完成代码注释，完成后将合并到项目中来。
 2. 补充了原图像的直方图，说明为什么要采用GMM的方法去进行图像分割。文献中指出
-
+</details>
 
 
 
