@@ -4,7 +4,7 @@
 **Instructor** : Prof. Xiaoying Tang\
 **Team ID** : 1\
 **Team Member**: Zhenwei Yao, Xinrao Li, Yaoyao Ji, Man Liu, Wei Gu, Haoyu Miao\
-@Southern University of Science and Technology, SUSTech
+@Southern University of Science and Technology (SUSTech), Shenzhen
 - - -
 
 ## I. INTRODUCTION
@@ -12,16 +12,19 @@ The segmentation algorithm used in this project is based on a parametric model i
 <div align=center>
 <img src="https://github.com/zjumhy97/MSP_Fa19_Proj_Team_1/blob/master/pic/Image_and_Histogram.jpg" width="1000" height = "500" >
 
-Input image and the Histogram
+Fig.1 Input image and the Histogram
 </div>
-
-
 
 
 
 ## II. THE METHOD
 
 ### A. Gaussian Mixture Model
+
+
+
+
+
 
 ### B. Expectation-Maximize Algorithm
 
