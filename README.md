@@ -1,26 +1,14 @@
-# Modern Signal Processing (2019Fall) Project Team 1
+# Eye Image Segmentation using Gaussian Mixture Model
 
-## Project: Eye image Segmentation (color image)
-
-<html>
-    <table style="margin-left: auto; margin-right: auto;">
-        <tr>
-            <td>
-                <!--left column-->
-                Input example:
-                <img src = "https://github.com/zjumhy97/MSP_Fa19_Proj_Team_1/blob/master/pic/Input_sample.jpg" width = "300" height="200" aligned = centering>
-            </td>
-            <td>
-                <!--rightcolumn-->
-                Output example:
-                <img src = "https://github.com/zjumhy97/MSP_Fa19_Proj_Team_1/blob/master/pic/Output_sample.jpg" width = "300" height="200" aligned = centering>
-            </td>
-        </tr>
-    </table>
-</html>
+**EEE5046 Modern Signal Processing (2019Fall)**\
+**Instructor** : Prof. Xiaoying Tang\
+**Team Number** : 1\
+**Team Member**: Zhenwei Yao, Xinrao Li, Yaoyao Ji, Man Liu, Wei Gu, Haoyu Miao\
+@Southern University of Science and Technology, SUSTech
+- - -
 
 ## I. INTRODUCTION
-The segmentation algorithm used in this project is based on a parametric model in which the probability density function (PDF) is a mixture of - <img src="https://latex.codecogs.com/gif.latex?K" />  Gaussian density functions. - <img src="https://latex.codecogs.com/gif.latex?K" />  is the total number of the Gaussian components. As a model-based segmentation algorithm, its performance is influenced by the shape of the image histogram and the accuracy of the estimates of the model parameters[[1]](#1).
+The segmentation algorithm used in this project is based on a parametric model in which the probability density function (PDF) is a mixture of <img src="https://latex.codecogs.com/gif.latex?K" />  Gaussian density functions. <img src="https://latex.codecogs.com/gif.latex?K" />  is the total number of the Gaussian components. As a model-based segmentation algorithm, its performance is influenced by the shape of the image histogram and the accuracy of the estimates of the model parameters[[1]](#1).
 <div align=center>
 <img src="https://github.com/zjumhy97/MSP_Fa19_Proj_Team_1/blob/master/pic/Image_and_Histogram.jpg" width="800" height = "400" >
 
