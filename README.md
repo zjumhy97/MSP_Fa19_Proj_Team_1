@@ -4,7 +4,7 @@
 **Instructor** : Prof. Xiaoying Tang\
 **Team ID** : 1\
 **Team Member**: Zhenwei Yao, Xinrao Li, Yaoyao Ji, Man Liu, Wei Gu, Haoyu Miao\
-@Southern University of Science and Technology (SUSTech), Shenzhen
+@Southern University of Science and Technology (SUSTech) , Shenzhen
 - - -
 
 ## I. INTRODUCTION
@@ -49,7 +49,7 @@ Gupta, Lalit, and Thotsapon Sortrakul.
 
 
 ## Gantt Graph
-```graph
+```mermaid
 gantt
         dateFormat  YYYY-MM-DD
         title Adding GANTT diagram functionality to mermaid
@@ -125,7 +125,7 @@ gantt
 </details>
 
 <details>
-<summary>2019/12/17 15:00-- by Haoyu</summary>
+<summary>2019/12/17 15:00 -- by Haoyu</summary>
 
 1. Zhenwei 目前实现了一个版本的EM-GMM，他目前正在完成代码注释，完成后将合并到项目中来。
 2. 补充了原图像的直方图，说明为什么要采用GMM的方法去进行图像分割。
