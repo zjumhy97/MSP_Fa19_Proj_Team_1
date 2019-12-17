@@ -22,14 +22,37 @@
             <td>
                 <!--rightcolumn-->
                 Output example:
-                <img src = "https://github.com/zjumhy97/MSP_Fa19_Proj_Team_1/blob/master/pic/Output_sample.jpg" width = "300" height="200" aligned = centerng>
+                <img src = "https://github.com/zjumhy97/MSP_Fa19_Proj_Team_1/blob/master/pic/Output_sample.jpg" width = "300" height="200" aligned = centering>
             </td>
         </tr>
     </table>
 </html>
 
-## 1. Introuduction
+## I. INTRODUCTION
+The segmentation algorithm used in this project is based on a parametric model in which the probability density function (PDF) is a mixture of $K$ Gaussian density functions. $K$ is the total number of the Gaussian components. As a model-based segmentation algorithm, its performance is influenced by the shape of the image histogram and the accuracy of the estimates of the model parameters[[1]](#1).
 
+<img src="https://github.com/zjumhy97/MSP_Fa19_Proj_Team_1/blob/master/pic/Image_and_Histogram.jpg" width="600" height = "400" aligned = centering>
+<center>Input image and the Histogram</center>
+
+
+## II. THE METHOD
+
+### A. Gaussian Mixture Model
+
+### B. Expectation-Maximize Algorithm
+
+
+
+## III. EXPERIMENT
+
+
+
+
+## IV. CONCLUSION
+
+
+
+## 4. Conclusion
 
 ## References
 <a id="1">[1]</a> 
@@ -88,7 +111,7 @@ Gupta, Lalit, and Thotsapon Sortrakul.
 <summary>2019/12/17 15:00-- by Haoyu</summary>
 
 1. Zhenwei 目前实现了一个版本的EM-GMM，他目前正在完成代码注释，完成后将合并到项目中来。
-2. 补充了原图像的直方图，说明为什么要采用GMM的方法去进行图像分割。文献中指出
+2. 补充了原图像的直方图，说明为什么要采用GMM的方法去进行图像分割。
 </details>
 
 
