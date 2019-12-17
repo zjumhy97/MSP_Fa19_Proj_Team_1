@@ -1,13 +1,4 @@
-# Modern Siganl Processing (2019Fall) Project Team 1
-
-## Requirements
-1. Need to use the <b>[EM algorithm](https://en.wikipedia.org/wiki/Expectation%E2%80%93maximization_algorithm)</b>
-2. Need to employ the <b>[Gaussian Mixture Modeling](https://brilliant.org/wiki/gaussian-mixture-model/)</b>
-3. Can <b>combine with other image processing techniques</b> to improve the final result
-4. Need to submit source code, PPT presentation, and a project report in word
-5. Scoring criteria: segmentation result; coding (efficiency + beauty); presentation; report
-6. Due Time: Decemeber 26,2019(Thrusday),10:20-12:10
-7. Presentation time: 12 mins perteam 
+# Modern Signal Processing (2019Fall) Project Team 1
 
 ## Project: Eye image Segmentation (color image)
 
@@ -66,9 +57,39 @@ Gupta, Lalit, and Thotsapon Sortrakul.
 
 
 
+## Gantt Graph
+```graph
+gantt
+        dateFormat  YYYY-MM-DD
+        title Adding GANTT diagram functionality to mermaid
+        section A section
+        Completed task            :done,    des1, 2014-01-06,2014-01-08
+        Active task               :active,  des2, 2014-01-09, 3d
+        Future task               :         des3, after des2, 5d
+        Future task2               :         des4, after des3, 5d
+        section Critical tasks
+        Completed task in the critical line :crit, done, 2014-01-06,24h
+        Implement parser and jison          :crit, done, after des1, 2d
+        Create tests for parser             :crit, active, 3d
+        Future task in critical line        :crit, 5d
+        Create tests for renderer           :2d
+        Add to mermaid                      :1d
+```
 
 
 
+
+
+
+
+## Requirements of the Project
+1. Need to use the <b>[EM algorithm](https://en.wikipedia.org/wiki/Expectation%E2%80%93maximization_algorithm)</b>
+2. Need to employ the <b>[Gaussian Mixture Modeling](https://brilliant.org/wiki/gaussian-mixture-model/)</b>
+3. Can <b>combine with other image processing techniques</b> to improve the final result
+4. Need to submit source code, PPT presentation, and a project report in word
+5. Scoring criteria: segmentation result; coding (efficiency + beauty); presentation; report
+6. Due Time: Decemeber 26,2019(Thrusday),10:20-12:10
+7. Presentation time: 12 mins perteam 
 
 
 ## Log
