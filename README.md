@@ -49,24 +49,22 @@ Gupta, Lalit, and Thotsapon Sortrakul.
 
 
 ## Gantt Graph
-```mermaid
+<details>
+<summary>Gantt Chart Code</summary>
 gantt
         dateFormat  YYYY-MM-DD
-        title Adding GANTT diagram functionality to mermaid
-        section A section
-        Completed task            :done,    des1, 2014-01-06,2014-01-08
-        Active task               :active,  des2, 2014-01-09, 3d
-        Future task               :         des3, after des2, 5d
-        Future task2               :         des4, after des3, 5d
-        section Critical tasks
-        Completed task in the critical line :crit, done, 2014-01-06,24h
-        Implement parser and jison          :crit, done, after des1, 2d
-        Create tests for parser             :crit, active, 3d
-        Future task in critical line        :crit, 5d
-        Create tests for renderer           :2d
-        Add to mermaid                      :1d
-```
+        section Team 1
+        title Eye Image Segment Project
+        Literature review       :active,      2019-12-12,2019-12-22
+        Experiment                :active,    2019-12-14,2019-12-24
+        Write Paper               :active,      2019-12-17,2019-12-25     
+        Presentation              :crit,      2019-12-25, 1d
+</details>
+<div align=center>
+<img src="https://github.com/zjumhy97/MSP_Fa19_Proj_Team_1/blob/master/pic/GanttChart.png" width="1400" height = "200" >
 
+Fig.10 Gantt Chart
+</div>
 
 
 
