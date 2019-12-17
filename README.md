@@ -32,6 +32,7 @@
 The segmentation algorithm used in this project is based on a parametric model in which the probability density function (PDF) is a mixture of - <img src="https://latex.codecogs.com/gif.latex?K" />  Gaussian density functions. - <img src="https://latex.codecogs.com/gif.latex?K" />  is the total number of the Gaussian components. As a model-based segmentation algorithm, its performance is influenced by the shape of the image histogram and the accuracy of the estimates of the model parameters[[1]](#1).
 <div align=center>
 <img src="https://github.com/zjumhy97/MSP_Fa19_Proj_Team_1/blob/master/pic/Image_and_Histogram.jpg" width="800" height = "600" >
+
 Input image and the Histogram
 </div>
 
