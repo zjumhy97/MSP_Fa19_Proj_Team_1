@@ -14,74 +14,83 @@
 function [fig_new,Theta] = Expectation_Maximization_GMM(K,epsilon,ThetaInit,fig)
 % K - total number of Gaussian components, reference, K = 2
 % epsilon - Termination condition parameter, reference, epsilon = 1e-5
-% Theta_0 - include the initial value of Tao, Mu, Sigma; e.g. Theta.Tao
+% Theta_Init - include the initial value of Tao, Mu, Sigma; e.g. Theta.Tao
 % fig - the input figure
-tao1 = ThetaInit.Tao(1);
-tao2 = ThetaInit.Tao(2);
-mu1 = cell2mat(ThetaInit.Mu(1));
-mu2 = cell2mat(ThetaInit.Mu(2));
-sigma1 = cell2mat(ThetaInit.Sigma(1));
-sigma2 = cell2mat(ThetaInit.Sigma(2));
 
-m = size(fig,1);
-n = size(fig,2);
+[m,n,d] = size(fig); % for the color image,d is 3.
 N = m * n;
-X = reshape(fig,N,3);
+X = reshape(fig,N,d);
+
+% Initialization of the parameter Theta = [tao, mu, sigma]
+% calculate the probability density of ThetaInit
+tao = ThetaInit.Tao; % K by 1
+for j = 1:K
+    mu(j,:) = cell2mat(ThetaInit.Mu(j)); % 1 by 3
+    sigma(j) = ThetaInit.Sigma(j); % 3 by 3,注意sigma是cell
+    % mu(j) is 1 by 3 vector, prob_density_Theta is N by K matrix.
+    prob_density_Theta(:,j) = mvnpdf(X,mu(j,:),cell2mat(sigma(j)));
+end
+
+% gamma - membership probabilities
+gamma = [];
+for j = 1:K
+    gamma(:,j) = tao(j) * prob_density_Theta(:,j)./(prob_density_Theta * tao); 
+end
 
 t = 1;
-for i = 1:N 
-    gamma(i,1) = tao1 * mvnpdf(X(i,:)',mu1,sigma1) / (tao1 * mvnpdf(X(i,:)',mu1,sigma1) + tao2 * mvnpdf(X(i,:)',mu2,sigma2));
-end
-gamma(:,2) = 1 - gamma(:,1);
 Q(t) = 0;
-for i = 1:N
-    Q(t) = Q(t) + (gamma(i,1) * log(mvnpdf(X(i,:)',mu1,sigma1)) + gamma(i,2) * log(mvnpdf(X(i,:)',mu2,sigma2))); 
+for j = 1:K
+    Q(t) = Q(t) + gamma(:,j)' * log(tao(j) * mvnpdf(X,mu(j,:),cell2mat(sigma(j))));
 end
-gamma = [];
+
 
 termination = false;
 while ~termination
     t = t + 1;    
 % E step
-    for i = 1:N 
-        gamma(i,1) = tao1 * mvnpdf(X(i,:)',mu1,sigma1) / (tao1 * mvnpdf(X(i,:)',mu1,sigma1) + tao2 * mvnpdf(X(i,:)',mu2,sigma2));
+%     sum_gamma_1 = sum(gamma(:,1));
+    for j = 1:K
+        gamma(:,j) =  tao(j) * prob_density_Theta(:,j) ./ (prob_density_Theta * tao); 
     end
-    gamma(:,2) = 1 - gamma(:,1);
-    sum_gamma_1 = sum(gamma(:,1));
 
 % M step
-    tao1 = sum_gamma_1 / N;
-    tao2 = 1 - tao1;
-    mu1 = (gamma(:,1)'*X/sum_gamma_1)';
-    mu2 = (gamma(:,2)'*X/(N - sum_gamma_1))';
-    
-    term1 = zeros(3);
-    term2 = zeros(3);
-    for i = 1:N
-       term1 = term1 + gamma(i,1) * (X(i,:) - mu1)' * (X(i,:) - mu1);
-       term2 = term2 + gamma(i,2) * (X(i,:) - mu2)' * (X(i,:) - mu2);
+    tao = 1/N * sum(gamma)'; % sum(gamma): 1 by 2
+    mu = (X'*gamma./sum(gamma))';
+    for j = 1:K
+       term = sqrt(gamma(:,j)).*(X - mu(j,:)); % N*1 .* N*3 get N*3
+       sigma(j) = {term'*term / sum(gamma(:,j))};
     end
-    sigma1 = term1 / sum_gamma_1;
-    sigma2 = term2 / (N - sum_gamma_1);
     
+    % 实际上Q(t) 一直是NaN 没起作用
     Q(t) = 0;
-    for i = 1:N
-       Q(t) = Q(t) + (gamma(i,1) * log(mvnpdf(X(i,:)',mu1,sigma1)) + gamma(i,2) * log(mvnpdf(X(i,:)',mu2,sigma2))); 
+    for j = 1:K
+        p=log(tao(j) * mvnpdf(X,mu(j,:),cell2mat(sigma(j))));
+
+        % Q(t) = Q(t) + gamma(1:2470000,j)' *p(1:2470000);
+        Q(t) = Q(t) + gamma(:,j)' * p;
     end
-    if t > 200 || Q(t)-Q(t-1)<epsilon  % 循环终止的条件
-        termination = true; 
+
+        
+    
+    % Condition of the termination
+    if t > 50 || Q(t)-Q(t-1) < epsilon  
+        termination = true;         
     end
-    fprintf('step: %d  delta: %f\n',t,Q(t)-Q(t-1));
+    fprintf('step: %d  delta: %f  Q(t): %s\n',t,Q(t)-Q(t-1),Q(t));
 end
-X_new = zeros(N,1);
-X_new(find(gamma(:,1)<gamma(:,2))) = 1;
+
+% 这部分关于图像的代码之后移出去这个程序吧，现在先用这个测试
+X_new = ones(N,1);
+X_new(find(gamma(:,1)<gamma(:,2))) = 0;
 fig_new = reshape(X_new,m,n);
 
-Theta.Tao = [tao1, tao2];
-Theta.Mu(1) = {mu1};
-Theta.Mu(2) = {mu2};
-Theta.Sigma(1) = {sigma1};
-Theta.Sigma(2) = {sigma2};
+% Ouput the parameter, Theta
+Theta.Tao = tao;
+for j = 1:K
+Theta.Mu(j) = {mu(j)};
+Theta.Sigma(j) = {sigma(j)};
+end
+
 end
 
 
