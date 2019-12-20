@@ -24,21 +24,24 @@ fig2_hsv = rgb2hsv(fig2);
 fig3_hsv = rgb2hsv(fig3);
 fig4_hsv = rgb2hsv(fig4);
 
-%% 
+%% Experiment
 K = 2;
-epsilon = 1e-3; % 先用1e-2测试，牺牲精度换取速度，随后用1e-5保证精度
-% 需要通过kmenas的方法确定Theta的初始值。
-ThetaInit.Tao = [0.7952;0.2048];
-ThetaInit.Mu(1) = {[0.9822;0.9917;0.9920]};
-ThetaInit.Mu(2) = {[0.1187;0.4582;0.6209]};
-ThetaInit.Sigma(1) = {[0.00291864830136754,0.00110085113292398,0.000621650700252833;0.00110085113292398,0.000588324525010634,0.000383446318771079;0.000621650700252833,0.000383446318771079,0.000338358607016605]};
-ThetaInit.Sigma(2) = {[0.0134280068677897,0.00657102627105072,0.00258089540851694;0.00657102627105072,0.0161002713301740,0.0170049990158547;0.00258089540851694,0.0170049990158547,0.0208782366505169]};
+epsilon = 1e-7; 
 
-% [fig_new_5,Theta] = Expectation_Maximization_GMM(K,epsilon,ThetaInit,fig5);
-[fig_new_1,Theta] = Expectation_Maximization_GMM(K,epsilon,ThetaInit,fig1);
+% try some different initial values of Theta
+% ThetaInit.Tao = [0.7952;0.2048];
+% ThetaInit.Mu(1) = {[0.0479 0.1157 0.1989]};
+% ThetaInit.Mu(2) = {[0.4068 0.7476 0.4329]};
+% ThetaInit.Sigma(1) = {[0.0019 0.0044 0.0037;0.0044 0.0116 0.0087;0.0037 0.0087 0.0271]};
+% ThetaInit.Sigma(2) = {[0.0176 0.0185 0.0032;0.0185 0.0238 0.0016;0.0032 0.0016 0.0325]};
+
+[ThetaInit1] = getTheta_kmeans(K,fig1);
+[fig_new_1,Theta] = ImageSegmentation_GMM(K,epsilon,ThetaInit1,fig1);
+
 %[fig_new_2,Theta] = Expectation_Maximization_GMM(K,epsilon,ThetaInit,fig2);
 %[fig_new_3,Theta] = Expectation_Maximization_GMM(K,epsilon,ThetaInit,fig3);
 %[fig_new_4,Theta] = Expectation_Maximization_GMM(K,epsilon,ThetaInit,fig4);
+%[fig_new_5,Theta] = Expectation_Maximization_GMM(K,epsilon,ThetaInit,fig5);
 
 
 

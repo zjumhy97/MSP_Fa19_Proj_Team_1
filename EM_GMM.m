@@ -84,7 +84,7 @@ end
 % Ouput the parameter, Theta
 Theta.Tao = tao;
 for j = 1:K
-Theta.Mu(j) = {mu(j)};
+Theta.Mu(j) = {mu(j,:)};
 Theta.Sigma(j) = {sigma(j)};
 end
 end

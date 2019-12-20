@@ -8,20 +8,17 @@
 %  Github: https://github.com/zjumhy97/MSP_Fa19_Proj_Team_1
 %**************************************************************************
 
-function [Theta,mu] = getTheta_kmeans(K,X)
-% 这个函数不确定，先暂时不要用，后续还得再看
+function [Theta] = getTheta_kmeans(K,fig)
+[m,n,d] = size(fig);
+N = m * n;
+X = reshape(fig,N,d);
 
-
-
-row_num = size(X,1);
-n_channel = size(X,2);
-
-[labels,mu] = kmeans(X,K);
-%用MLE计算初始的权重（pai）和方差sigma
+[idx,mu] = kmeans(X,K);
 for k = 1:K
-    Theta.Tao(k) = sum(labels == k)/row_num; 
-    Theta.Sigma{k} = cov(X(labels == k,:)); 
+    Theta.Tao(k) = sum(idx == k)/N;
+    Theta.Mu(k) = {mu(k,:)}; 
+    Theta.Sigma(k) = {cov(X(idx == k,:))};
 end
-
+Theta.Tao = Theta.Tao';
 
 end
