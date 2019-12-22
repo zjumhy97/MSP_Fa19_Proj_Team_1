@@ -8,6 +8,11 @@
 - - -
 
 ## I. INTRODUCTION
+**// to be edited**
+
+The goal of segmentation is to partition an image into regions each of which has a reasonably homogeneous visual appearance or which corresponds to objects or parts of objects (ForsythandPonce,2003). Eachpixelinanimageisapointina3-dimensionalspace comprising the intensities of the red, blue, and green channels, and our segmentation algorithm simply treats each pixel in the image as a separate data point. 
+We see that for a given value of K, the algorithm is representing the image using a palette of only K colours
+
 The segmentation algorithm used in this project is based on a parametric model in which the probability density function (PDF) is a mixture of <img src="https://latex.codecogs.com/gif.latex?K" />  Gaussian density functions. <img src="https://latex.codecogs.com/gif.latex?K" />  is the total number of the Gaussian components. As a model-based segmentation algorithm, its performance is influenced by the shape of the image histogram and the accuracy of the estimates of the model parameters[[1]](#1).
 <div align=center>
 <img src="https://github.com/zjumhy97/MSP_Fa19_Proj_Team_1/blob/master/pic/Image_and_Histogram.jpg" width="1000" height = "500" >
@@ -45,6 +50,13 @@ Fig.1 Input image and the Histogram
 <a id="1">[1]</a> 
 Gupta, Lalit, and Thotsapon Sortrakul. 
 "A Gaussian-mixture-based image segmentation algorithm." Pattern Recognition 31, no. 3 (1998): 315-325.
+
+
+## some metrics
+feature similarity index (FSIM)
+structure similarity index (SSIM)
+peak signal noise ratio (PSNR)
+
 
 
 
